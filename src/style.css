@@ -4,7 +4,7 @@ body {
 }
 .container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 900px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -55,6 +55,9 @@ body {
 .bullet {
   color: #7fa99b;
 }
+.highlightColor {
+  color: #df8543;
+}
 .searchInfo .temperature-container {
   margin-top: 30px;
 }
@@ -73,6 +76,22 @@ body {
   margin: 40px 0;
   border-bottom: 1px solid #f9f7fe;
   padding-bottom: 50px;
+}
+.forecastDay {
+  text-decoration: 0.5px underline lightgray;
+}
+
+.forecastTempMin {
+  font-weight: 200;
+  color: #7fa99b;
+  line-height: 3;
+  padding-left: 7px;
+}
+
+.forecastTempMax {
+  color: #df8543;
+  line-height: 3;
+  padding-right: 7px;
 }
 
 .weatherWrapper footer {
