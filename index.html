@@ -10,12 +10,84 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <h1>Hello World</h1>
+      <div class="weatherWrapper">
+        <form>
+          <div class="row searchBar">
+            <div class="col-9">
+              <input
+                type="search"
+                placeholder="Enter a city"
+                class="form-control search-input"
+              />
+          </div>
+          <div class="col-3 p-0">
+            <input
+              type="submit"
+              class="btn btn-primary w-100"
+              value="Search"
+            />
+          </div>
+          </div>
+                  </form>
+        <div class="searchInfo">
+          <div class="row">
+            <div class="col-6">
+             <h1 class="city">
+               Austin
+             </h1>
+            <ul>
+              <li>
+                <span> 
+                  Wed 8:49 am <span class="bullet"> • </span> Slightly cloudy
+                </span>
+              </li>
+              <li>
+                <span> 
+                  Humidity : 15% <span class="bullet"> • </span> Wind : 2 mph
+                </span>
+              </li>
+            </ul>
+          </div>  
+          <div class="col-6">
+            <div class="temperature-container d-flex justify-content-end">
+              <div>
+                <span class="temperature">92</span>
+                <span class="unit">°F</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="weatherForecast row">
+<div class="col">
+  hold
+</div>
+<div class="col">
+  hold
+</div>
+<div class="col">
+  hold
+</div>
+<div class="col">
+  hold
+</div>
+<div class="col">
+  hold
+</div>
+      </div>
+      <footer>
+        This app was coded by Megan Currie and is <a href="https://github.com/mcurrie17/My-Weather-App" target="_blank"> open-sourced on GitHub</a> and <a href="https://mellow-boba-163d89.netlify.app/" target="_blank">hosted on Netlify.</a>
+      </footer>
+      </div>
+      </div>
     </div>
     <script src="src/app.js"></script>
   </body>
