@@ -56,6 +56,8 @@ body {
   line-height: 25px;
   list-style: none;
   color: #a8a5b4;
+}
+.searchInfo .li::first-letter {
   text-transform: capitalize;
 }
 .bullet {
