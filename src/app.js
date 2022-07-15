@@ -5,17 +5,16 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+  let hours = date.getHours() % 12 || 12;
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+  let amPM = hours >= 12 ? "AM" : "PM";
+  let time = `${hours}:${minutes} ${amPM}`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${time}`;
 }
 
 function displayTemp(response) {
@@ -29,8 +28,16 @@ function displayTemp(response) {
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  windSpeedElement.innerHTML = response.data.wind.speed;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 axios.get(apiUrl).then(displayTemp);
+
+let searchBar = document.querySelector("#searchBar");
+searchBar.addEventListener("submit", handleSubmit);
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", currentLocationWeather);
+
+searchCity("Austin");
