@@ -23,13 +23,15 @@
   <body>
     <div class="container">
       <div class="weatherWrapper">
-        <form>
+        <form id="searchForm">
           <div class="row searchBar">
             <div class="col-9">
               <input
                 type="search"
                 placeholder="Enter a city"
-                class="form-control search-input"
+                class="form-control"
+                id="search-input"
+                autocomplete="off"
               />
             </div>
             <div class="col-3 p-0">
@@ -48,10 +50,10 @@
               <ul>
                 <li>
                   Last updated:
-                  <span id="date">
-                    Wed 8:49 am <span class="bullet"> • </span>
+                  <span id="date"></span>
+                  <li>
                     <span id="description"></span>
-                  </span>
+                  </li>
                 </li>
                 <li>
                   <span>
@@ -70,6 +72,7 @@
             </div>
             <div class="col-6">
               <div class="temperature-container d-flex justify-content-end">
+                <img src="https://icon-library.com/images/weather-icon/weather-icon-4.jpg" alt="sunny" class="float-left"> 
                 <div>
                   <span id="temperature"> </span>
                   <span class="unit"> °F </span>

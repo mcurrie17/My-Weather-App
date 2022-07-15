@@ -1,8 +1,3 @@
-let apiKey = "095d2e824ddba0bb0037c48b7b065155";
-let city = "Austin";
-let units = "imperial";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours() % 12 || 12;
@@ -32,12 +27,20 @@ function displayTemp(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
-axios.get(apiUrl).then(displayTemp);
+function searchCity(city) {
+  let apiKey = "095d2e824ddba0bb0037c48b7b065155";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayTemp);
+}
 
-let searchBar = document.querySelector("#searchBar");
-searchBar.addEventListener("submit", handleSubmit);
-
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", currentLocationWeather);
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchInputElement = document.querySelector("#search-input");
+  searchCity(searchInputElement.value);
+}
 
 searchCity("Austin");
+
+let form = document.querySelector("#searchForm");
+form.addEventListener("submit", handleSubmit);

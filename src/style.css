@@ -45,6 +45,12 @@ body {
   font-size: 60px;
   line-height: 48px;
 }
+img {
+  display: block;
+  width: 125px;
+  height: 125px;
+  padding-right: 20px;
+}
 .searchInfo ul {
   margin: 0;
   padding: 0;
@@ -57,7 +63,7 @@ body {
   list-style: none;
   color: #a8a5b4;
 }
-.searchInfo .li::first-letter {
+.searchInfo {
   text-transform: capitalize;
 }
 .bullet {
