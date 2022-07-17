@@ -2,6 +2,12 @@ body {
   background-color: #ecfcfc;
   font-family: "Karla", sans-serif;
 }
+img {
+  display: block;
+  width: 125px;
+  height: 125px;
+  padding-right: 20px;
+}
 .container {
   width: 100%;
   max-width: 900px;
@@ -45,11 +51,8 @@ body {
   font-size: 60px;
   line-height: 48px;
 }
-img {
-  display: block;
-  width: 125px;
-  height: 125px;
-  padding-right: 20px;
+.searchInfo {
+  text-transform: capitalize;
 }
 .searchInfo ul {
   margin: 0;
@@ -63,9 +66,6 @@ img {
   list-style: none;
   color: #a8a5b4;
 }
-.searchInfo {
-  text-transform: capitalize;
-}
 .bullet {
   color: #7fa99b;
 }
@@ -74,6 +74,9 @@ img {
 }
 .searchInfo .temperature-container {
   margin-top: 30px;
+}
+.currentTemp {
+  margin-right: 10px;
 }
 .searchInfo #temperature {
   font-size: 80px;
@@ -84,6 +87,25 @@ img {
   line-height: 1;
   top: -34px;
   font-size: 30px;
+  font-weight: 1;
+}
+.searchInfo a {
+  text-decoration: none;
+}
+.searchInfo a:hover {
+  text-decoration: underline;
+}
+.searchInfo .active {
+  color: black;
+  cursor: default;
+}
+.searchInfo .active:hover {
+  text-decoration: none;
+}
+.feels-like {
+  font-size: 20px;
+  line-height: 25px;
+  color: #a8a5b4;
 }
 .weatherForecast {
   text-align: center;

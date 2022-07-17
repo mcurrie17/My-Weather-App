@@ -73,9 +73,10 @@
             <div class="col-6">
               <div class="temperature-container d-flex justify-content-end">
                 <img src="https://icon-library.com/images/weather-icon/weather-icon-4.jpg" alt="sunny" class="float-left"> 
-                <div>
+                <div class="currentTemp">
                   <span id="temperature"> </span>
-                  <span class="unit"> °F </span>
+                  <span class="unit"> <a href="#"  id="fahrenheit-link" class="active"> °F </a>|<a href="#"  id="celcius-link">°C </a> </span>
+                  <div class="feels-like"> Feels like : <span class="justify-content-right highlightColor" id="feelsLikeTemp"></span>°</div>
                 </div>
               </div>
             </div>
