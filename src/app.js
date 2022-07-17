@@ -20,6 +20,7 @@ function displayTemp(response) {
   let windSpeedElement = document.querySelector("#windSpeed");
   let dateElement = document.querySelector("#date");
   let feelsLike = document.querySelector("#feelsLikeTemp");
+  let iconElement = document.querySelector("#icon");
   feelsLikeTemperature = response.data.main.feels_like;
   fahrenheitTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -29,6 +30,12 @@ function displayTemp(response) {
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   feelsLike.innerHTML = Math.round(feelsLikeTemperature);
+  iconElement.setAttribute(
+    "src",
+    `src/images/${response.data.weather[0].icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+  console.log(response.data);
 }
 
 function searchCity(city) {
