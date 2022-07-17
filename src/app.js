@@ -20,6 +20,7 @@ function displayTemp(response) {
   let windSpeedElement = document.querySelector("#windSpeed");
   let dateElement = document.querySelector("#date");
   let feelsLike = document.querySelector("#feelsLikeTemp");
+  feelsLikeTemperature = response.data.main.feels_like;
   fahrenheitTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   cityElement.innerHTML = response.data.name;
@@ -27,7 +28,7 @@ function displayTemp(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+  feelsLike.innerHTML = Math.round(feelsLikeTemperature);
 }
 
 function searchCity(city) {
@@ -46,10 +47,13 @@ function handleSubmit(event) {
 function displayCelciusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
+  let feelsLike = document.querySelector("#feelsLikeTemp");
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let celciusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+  let celciusFeelsLike = ((feelsLikeTemperature - 32) * 5) / 9;
   temperatureElement.innerHTML = Math.round(celciusTemperature);
+  feelsLike.innerHTML = Math.round(celciusFeelsLike);
 }
 
 function displayFahrenheitTemperature(event) {
@@ -57,10 +61,14 @@ function displayFahrenheitTemperature(event) {
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
+  let feelsLike = document.querySelector("#feelsLikeTemp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  feelsLike.innerHTML = Math.round(feelsLikeTemperature);
 }
 
 let fahrenheitTemperature = null;
+
+let feelsLikeTemperature = null;
 
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
