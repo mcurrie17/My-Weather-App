@@ -25,7 +25,7 @@
       <div class="weatherWrapper">
         <form id="searchForm">
           <div class="row searchBar">
-            <div class="col-9">
+            <div class="col-7 offset-md-1">
               <input
                 type="search"
                 placeholder="Enter a city"
@@ -34,11 +34,19 @@
                 autocomplete="off"
               />
             </div>
-            <div class="col-3 p-0">
+            <div class="col-2 p-0">
               <input
                 type="submit"
                 class="btn btn-primary w-100"
                 value="Search"
+              />
+            </div>
+            <div class="col-1">
+              <input
+                type="submit"
+                class="btn btn-primary"
+                id="locationButton"
+                value="📍"
               />
             </div>
           </div>
@@ -64,7 +72,7 @@
                     <span class="bullet"> • </span>
                     Wind :
                     <span class="highlightColor">
-                      <span id="windSpeed"></span> mph</span
+                      <span id="windSpeed"></span> <span id="windUnit"> mph</span></span
                     >
                   </span>
                 </li>

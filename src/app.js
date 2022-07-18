@@ -13,17 +13,16 @@ function formatDate(timestamp) {
 }
 
 function formatForecastDay(timestamp) {
-  let date = new Date(timestamp * 1000)
-  let day = date.getDay()
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[day]
+  return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
@@ -96,6 +95,18 @@ function handleSubmit(event) {
   searchCity(searchInputElement.value);
 }
 
+function searchLocation(position) {
+  let apiKey = "095d2e824ddba0bb0037c48b7b065155";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+
+function currentLocationWeather(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
 function displayCelciusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -130,5 +141,8 @@ celciusLink.addEventListener("click", displayCelciusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let currentLocationButton = document.querySelector("#locationButton");
+currentLocationButton.addEventListener("click", currentLocationWeather);
 
 searchCity("Austin");
