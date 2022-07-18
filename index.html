@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
-    <title>Weather App</title>
+    <title>☀️ Weather App</title>
   </head>
   <body>
     <div class="container">
@@ -72,7 +72,7 @@
             </div>
             <div class="col-6">
               <div class="temperature-container d-flex justify-content-end">
-                <img src="" alt="" class="float-left" id="icon"> 
+                <img src="" alt="" class="float-left" id="mainIcon"> 
                 <div class="currentTemp">
                   <span id="temperature"> </span>
                   <span class="unit"> <a href="#"  id="fahrenheit-link" class="active"> °F </a>|<a href="#"  id="celcius-link">°C </a> </span>
@@ -82,42 +82,8 @@
             </div>
           </div>
         </div>
-        <div class="weatherForecast row">
-          <div class="col">
-            <div class="forecastDay">Sunday</div>
-            <div class="forecastTemp">
-              <span class="forecastTempMax"> 98° </span>
-              <span class="forecastTempMin"> 72° </span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="forecastDay">Sunday</div>
-            <div class="forecastTemp">
-              <span class="forecastTempMax"> 98° </span>
-              <span class="forecastTempMin"> 72° </span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="forecastDay">Sunday</div>
-            <div class="forecastTemp">
-              <span class="forecastTempMax"> 98° </span>
-              <span class="forecastTempMin"> 72° </span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="forecastDay">Sunday</div>
-            <div class="forecastTemp">
-              <span class="forecastTempMax"> 98° </span>
-              <span class="forecastTempMin"> 72° </span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="forecastDay">Sunday</div>
-            <div class="forecastTemp">
-              <span class="forecastTempMax"> 98° </span>
-              <span class="forecastTempMin"> 72° </span>
-            </div>
-          </div>
+        <div class="weatherForecast" id="forecast">
+     
         </div>
         <footer>
           This app was coded by Megan Currie and is

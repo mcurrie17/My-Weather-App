@@ -12,6 +12,26 @@ function formatDate(timestamp) {
   return `${day} ${time}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">           
+            <div class="forecastDate">${day}</div>
+            <img src="src/images/01d.png" alt="" class="float-left" id="forecastIcon" > 
+            <div>
+              <span class="forecastTempMax"> 98° </span>
+              <span class="forecastTempMin"> 72° </span>
+            </div>
+          </div>`;
+  });
+  forecastHTML = forecastHTML + `</div`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemp(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -20,7 +40,7 @@ function displayTemp(response) {
   let windSpeedElement = document.querySelector("#windSpeed");
   let dateElement = document.querySelector("#date");
   let feelsLike = document.querySelector("#feelsLikeTemp");
-  let iconElement = document.querySelector("#icon");
+  let iconElement = document.querySelector("#mainIcon");
   feelsLikeTemperature = response.data.main.feels_like;
   fahrenheitTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -87,3 +107,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 searchCity("Austin");
+displayForecast();

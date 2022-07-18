@@ -2,7 +2,7 @@ body {
   background-color: #ecfcfc;
   font-family: "Karla", sans-serif;
 }
-img {
+#mainIcon {
   display: block;
   height: 125px;
   padding-right: 20px;
@@ -19,7 +19,9 @@ img {
   background-color: #fff;
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 5px 50px rgb(65 50 100 / 8%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border: 1px solid lightgray;
   margin: 30px;
 }
@@ -112,17 +114,19 @@ img {
   border-bottom: 1px solid #f9f7fe;
   padding-bottom: 50px;
 }
-.forecastDay {
+.forecastDate {
   text-decoration: 0.5px underline lightgray;
 }
-
+#forecastIcon {
+  margin-top: 10px;
+  height: 25px;
+}
 .forecastTempMin {
   font-weight: 200;
   color: #7fa99b;
   line-height: 3;
   padding-left: 7px;
 }
-
 .forecastTempMax {
   color: #df8543;
   line-height: 3;
