@@ -12,7 +12,8 @@ function formatDate(timestamp) {
   return `${day} ${time}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = `<div class="row">`;
@@ -30,6 +31,13 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = `095d2e824ddba0bb0037c48b7b065155`;
+  let units = "imperial";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiURL).then(displayForecast);
 }
 
 function displayTemp(response) {
@@ -55,7 +63,8 @@ function displayTemp(response) {
     `src/images/${response.data.weather[0].icon}.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  console.log(response.data);
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -107,4 +116,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 searchCity("Austin");
-displayForecast();
