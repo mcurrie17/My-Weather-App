@@ -60,7 +60,7 @@ body {
   font-size: 60px;
   line-height: 48px;
 }
-.searchInfo {
+li::first-letter {
   text-transform: capitalize;
 }
 .searchInfo ul {

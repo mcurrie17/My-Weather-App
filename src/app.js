@@ -49,8 +49,6 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey = `095d2e824ddba0bb0037c48b7b065155`;
-  let units = "imperial";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiURL).then(displayForecast);
 }
@@ -61,16 +59,24 @@ function displayTemp(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#windSpeed");
+  let windSpeedUnit = document.querySelector("#windUnit");
   let dateElement = document.querySelector("#date");
   let feelsLike = document.querySelector("#feelsLikeTemp");
   let iconElement = document.querySelector("#mainIcon");
+  cityInputElement = response.data.name;
   feelsLikeTemperature = response.data.main.feels_like;
-  fahrenheitTemperature = response.data.main.temp;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  temperature = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(temperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+  if (units == "metric") {
+    windSpeedElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+    windSpeedUnit.innerHTML = "km/h";
+  } else if (units == "imperial") {
+    windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+    windSpeedUnit.innerHTML = "mph";
+  }
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   feelsLike.innerHTML = Math.round(feelsLikeTemperature);
   iconElement.setAttribute(
@@ -83,21 +89,17 @@ function displayTemp(response) {
 }
 
 function searchCity(city) {
-  let apiKey = "095d2e824ddba0bb0037c48b7b065155";
-  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
 }
 
 function handleSubmit(event) {
   event.preventDefault();
-  let searchInputElement = document.querySelector("#search-input");
-  searchCity(searchInputElement.value);
+  let searchInputElement = document.querySelector("#search-input").value;
+  searchCity(searchInputElement);
 }
 
 function searchLocation(position) {
-  let apiKey = "095d2e824ddba0bb0037c48b7b065155";
-  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
 }
@@ -109,29 +111,28 @@ function currentLocationWeather(event) {
 
 function displayCelciusTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let feelsLike = document.querySelector("#feelsLikeTemp");
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  let celciusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
-  let celciusFeelsLike = ((feelsLikeTemperature - 32) * 5) / 9;
-  temperatureElement.innerHTML = Math.round(celciusTemperature);
-  feelsLike.innerHTML = Math.round(celciusFeelsLike);
+  units = "metric";
+  searchCity(cityInputElement);
 }
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  let feelsLike = document.querySelector("#feelsLikeTemp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  feelsLike.innerHTML = Math.round(feelsLikeTemperature);
+  units = "imperial";
+  searchCity(cityInputElement);
 }
 
-let fahrenheitTemperature = null;
+let temperature = null;
+
+let apiKey = "095d2e824ddba0bb0037c48b7b065155";
+
+let units = "imperial";
 
 let feelsLikeTemperature = null;
+let cityInputElement = "Austin";
 
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
